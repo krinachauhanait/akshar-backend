@@ -16,13 +16,15 @@ app.use(express.static("public"));
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
-    secure: false, // important
+    secure: false, // MUST be false for 587
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
+    },
+    tls: {
+        rejectUnauthorized: false
     }
 });
-
 // ✅ Verify connection (DEBUGGING)
 transporter.verify((error, success) => {
     if (error) {
