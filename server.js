@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "Loaded" : "Missing");
+
 const express = require("express");
 const nodemailer = require("nodemailer");
 
@@ -16,7 +19,8 @@ app.use(express.static("public"));
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
-    secure: false, // MUST be false for 587
+    secure: false,// MUST be false for 587
+    family: 4,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
