@@ -1,12 +1,12 @@
 require("dotenv").config();
 
-console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "Loaded" : "Missing");
-
 const express = require("express");
 const nodemailer = require("nodemailer");
 
 const app = express();
+
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "Loaded" : "Missing");
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
